@@ -20,4 +20,15 @@ function [n, e, d] = keygen(p, q)
 %
 % Written by Elijah Ki-Zerbo
 
+  n = p*q
+
+  lambda = lcm(p - 1, q - 1)
+
+  e = randi([2, lambda],1,1)
+
+  while gcd(e, lambda) != 1
+    e = randi([2, lambda],1,1)
+  endwhile
+
+  d = mod(e^(-1),lambda)
 endfunction
